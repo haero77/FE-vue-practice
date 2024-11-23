@@ -1,6 +1,7 @@
 "<!--  html code -->
 <template>
   <Navbar />
+  <Event :text="text"/>
   <h1>영화 정보</h1>
   <div v-for="(movie, movieIndex) in movieData" :key="movieIndex" class="movie-item">
     <figure>
@@ -17,7 +18,7 @@
       </p>
     </div>
   </div>
-  <Modal />
+<!--  <Modal />-->
 </template>
 
 <!-- js -->
@@ -25,7 +26,8 @@
 import "@/styles/main.css"
 import movieData from "@/assets/movies";
 import Navbar from "@/components/Navbar.vue";
-import Modal from './components/Modal.vue';
+import Event  from "@/components/Event.vue";
+// import Modal from './components/Modal.vue';
 
 export default {
   name: 'App',
@@ -34,6 +36,7 @@ export default {
       isModalOpened: false,
       movieData: movieData,
       selectedMovie: 0,
+      text: "props로 보낼 변수값 ~~~ ",
     }
   },
   methods: {
@@ -43,8 +46,9 @@ export default {
   },
   // 컴포넌트 등록
   components: {
+    Event: Event,
     Navbar: Navbar,
-    Modal: Modal
+    // Modal: Modal
   }
 }
 </script>
