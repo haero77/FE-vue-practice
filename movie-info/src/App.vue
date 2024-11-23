@@ -5,6 +5,8 @@
     <h3 class="bg-yellow">{{ movie.title }}</h3>
     <p>개봉: {{ movie.year }}</p>
     <p>장르: {{ movie.category }}</p>
+    <button @click="increaseLikeCount(movie)">좋아요</button>
+    <span>{{ movie.like }}</span>
   </div>
 </template>
 
@@ -17,20 +19,28 @@ export default {
       movieData: [
         {
           title: "트루먼 쇼",
-          year: 1998,
           category: "드라마",
+          year: 1998,
+          like: 0,
         },
         {
           title: "해리포터와 마법사의 돌",
+          category: "드라마",
           year: 2001,
-          category: "드라마"
+          like: 0,
         },
         {
           title: "포레스트 검프",
+          category: "드라마",
           year: 1994,
-          category: "드라마"
+          like: 0,
         }
       ]
+    }
+  },
+  methods: {
+    increaseLikeCount(movie) {
+      movie.like++;
     }
   }
 }
