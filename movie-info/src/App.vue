@@ -1,6 +1,6 @@
 "<!--  html code -->
 <template>
-  <Navbar />
+  <Navbar/>
   <Event :text="text"/>
   <h1>영화 정보</h1>
   <div v-for="(movie, movieIndex) in movieData" :key="movieIndex" class="movie-item">
@@ -18,7 +18,12 @@
       </p>
     </div>
   </div>
-<!--  <Modal />-->
+  <Modal
+      :movieData="movieData"
+      :isModalOpened="isModalOpened"
+      :selectedMovie="selectedMovie"
+      @closeModal="isModalOpened=false"
+  />
 </template>
 
 <!-- js -->
@@ -26,8 +31,8 @@
 import "@/styles/main.css"
 import movieData from "@/assets/movies";
 import Navbar from "@/components/Navbar.vue";
-import Event  from "@/components/Event.vue";
-// import Modal from './components/Modal.vue';
+import Event from "@/components/Event.vue";
+import Modal from './components/Modal.vue';
 
 export default {
   name: 'App',
@@ -48,7 +53,7 @@ export default {
   components: {
     Event: Event,
     Navbar: Navbar,
-    // Modal: Modal
+    Modal: Modal
   }
 }
 </script>
