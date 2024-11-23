@@ -1,5 +1,6 @@
 "<!--  html code -->
 <template>
+  <Navbar />
   <h1>영화 정보</h1>
   <div v-for="(movie, movieIndex) in movieData" :key="movieIndex" class="movie-item">
     <figure>
@@ -16,20 +17,15 @@
       </p>
     </div>
   </div>
-
-  <div class="modal" v-if="isModalOpened">
-    <div class="inner">
-      <h3>{{ movieData[selectedMovie].title}}</h3>
-      <p>영화 상세 정보</p>
-      <button @click="isModalOpened=false">닫기</button>
-    </div>
-  </div>
+  <Modal />
 </template>
 
 <!-- js -->
 <script>
 import "@/styles/main.css"
 import movieData from "@/assets/movies";
+import Navbar from "@/components/Navbar.vue";
+import Modal from './components/Modal.vue';
 
 export default {
   name: 'App',
@@ -44,6 +40,11 @@ export default {
     increaseLikeCount(movieIndex) {
       this.movieData[movieIndex].like++;
     }
+  },
+  // 컴포넌트 등록
+  components: {
+    Navbar: Navbar,
+    Modal: Modal
   }
 }
 </script>
