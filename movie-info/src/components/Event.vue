@@ -1,7 +1,8 @@
 <template>
-  <div class="event">
+  <div class="event" :class="{show : isOpen}">
     <!-- props를 이용해서 App.vue에서 데이터 전달받기  -->
     <p>{{ text }}</p>
+    <button @click="close">X</button>
   </div>
 </template>
 
@@ -13,6 +14,16 @@ export default {
    */
   props: {
     text: String, // 들어오는 값의 타입 검증
+  },
+  data() {
+    return {
+      isOpen: true
+    }
+  },
+  methods: {
+    close () {
+      this.isOpen = false;
+    },
   }
 }
 </script>
@@ -24,9 +35,21 @@ export default {
   padding: 10px 20px;
   text-align: center;
   font-size: small;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  display: none;
+}
+
+.show {
+  display: block;
 }
 
 .event p {
+  margin: 0;
+}
+
+.event button {
   margin: 0;
 }
 </style>
