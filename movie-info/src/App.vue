@@ -2,6 +2,7 @@
 <template>
   <Navbar/>
   <Event :text="text"/>
+  <SearchBar/>
   <Movies
       :movieData="movieData"
       :isModalOpened="isModalOpened"
@@ -20,6 +21,7 @@
 <script>
 import "@/styles/main.css"
 import movieData from "@/assets/movies";
+import SearchBar from "@/components/SearchBar.vue";
 import Navbar from "@/components/Navbar.vue";
 import Event from "@/components/Event.vue";
 import Modal from './components/Modal.vue';
@@ -41,6 +43,7 @@ export default {
     Navbar: Navbar,
     Modal: Modal,
     Movies: Movies,
+    SearchBar: SearchBar,
   },
   methods: {
     increaseLikeCount(movieIndex) {
