@@ -12,13 +12,13 @@
   <Movies
       :movieData="movieDataTemp"
       :isModalOpened="isModalOpened"
-      @openModal="isModalOpened=true; selectedMovie=$event"
+      @openModal="isModalOpened=true; selectedMovieId=$event"
       @increaseLike="increaseLikeCount($event)"
   />
   <Modal
       :movieData="movieData"
       :isModalOpened="isModalOpened"
-      :selectedMovie="selectedMovie"
+      :selectedMovieId="selectedMovieId"
       @closeModal="isModalOpened=false"
   />
 </template>
@@ -40,7 +40,7 @@ export default {
       isModalOpened: false,
       movieData: movieData,
       movieDataTemp: [...movieData], // 영화데이터 사본
-      selectedMovie: 0,
+      selectedMovieId: 0,
       text: "props로 보낼 변수값 ~~~ ",
     }
   },
@@ -53,8 +53,12 @@ export default {
     SearchBar: SearchBar,
   },
   methods: {
-    increaseLikeCount(movieIndex) {
-      this.movieData[movieIndex].like++;
+    increaseLikeCount(movieId) {
+      this.movieData.find(movie => {
+        if (movie.id === movieId) {
+          movie.like++;
+        }
+      })
     },
     searchMovie(movieTitle) {
       // 영화제목이 포함된 데이터를가져옴
