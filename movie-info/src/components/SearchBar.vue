@@ -2,7 +2,10 @@
   <div class="search-box">
     <input
         type="search"
-        @change="inputText = $event.target.value"
+        @change="
+          inputText = $event.target.value;
+          $event.target.value = '';
+        "
         placeholder="검색어 입력">
     <button>검색</button>
   </div>
@@ -17,9 +20,19 @@ export default {
       inputText: "",
     }
   },
+  props: {
+    movieData: {
+      type: Array,
+      required: true
+    }
+  },
   watch: {
     inputText(movieName) {
-      if (movieName !== "트루먼 쇼") {
+      const filteredMovies = this.movieData.filter(movie => {
+        return movie.title.includes(movieName);
+      });
+
+      if (filteredMovies.length === 0) {
         alert("검색 결과가 없습니다.")
       }
     },

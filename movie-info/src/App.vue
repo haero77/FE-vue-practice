@@ -2,7 +2,7 @@
 <template>
   <Navbar/>
   <Event :text="text"/>
-  <SearchBar/>
+  <SearchBar :movieData="movieData"/>
   <Movies
       :movieData="movieData"
       :isModalOpened="isModalOpened"
