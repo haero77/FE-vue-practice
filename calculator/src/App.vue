@@ -1,31 +1,44 @@
-<script>
-export default {}
-</script>
-
 <template>
   <div class="calculator">
     <form name="forms">
-      <input type="text" name="output" readonly/>
-      <input type="button" class="clear" value="C"/>
-      <input type="button" class="operator" value="/"/>
-      <input type="button" value="1"/>
-      <input type="button" value="2"/>
-      <input type="button" value="3"/>
-      <input type="button" class="operator" value="*"/>
-      <input type="button" value="4"/>
-      <input type="button" value="5"/>
-      <input type="button" value="6"/>
-      <input type="button" class="operator" value="+"/>
-      <input type="button" value="7"/>
-      <input type="button" value="8"/>
-      <input type="button" value="9"/>
-      <input type="button" class="operator" value="-"/>
-      <input type="button" class="dot" value="."/>
-      <input type="button" value="0"/>
-      <input type="button" class="operator result" value="="/>
+      <input v-model="output" type="text" name="output" readonly/>
+      <input @click="operation" type="button" class="clear" value="C"/>
+      <input @click="operation" type="button" class="operator" value="/"/>
+      <input @click="operation" type="button" value="1"/>
+      <input @click="operation" type="button" value="2"/>
+      <input @click="operation" type="button" value="3"/>
+      <input @click="operation" type="button" class="operator" value="*"/>
+      <input @click="operation" type="button" value="4"/>
+      <input @click="operation" type="button" value="5"/>
+      <input @click="operation" type="button" value="6"/>
+      <input @click="operation" type="button" class="operator" value="+"/>
+      <input @click="operation" type="button" value="7"/>
+      <input @click="operation" type="button" value="8"/>
+      <input @click="operation" type="button" value="9"/>
+      <input @click="operation" type="button" class="operator" value="-"/>
+      <input @click="operation" type="button" class="dot" value="."/>
+      <input @click="operation" type="button" value="0"/>
+      <input @click="operation" type="button" class="operator result" value="="/>
     </form>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      output: null,   // 출력칸에 표시되어 사용자에게 노출되는 값
+      prev: null,     // 이전에 입력된 숫자나 연산결과를 저장
+      cur: null,      // 현재 입력중인 숫자를 저장
+      operator: null, // 사용자가 입력한 연산자를 저장
+    };
+  },
+  methods: {
+    operation() {
+    }
+  }
+}
+</script>
 
 <style>
 * {
