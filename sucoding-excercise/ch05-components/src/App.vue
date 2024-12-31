@@ -3,7 +3,9 @@
 
   <!-- 컴포넌트를 사용할 때 컴포넌트와 함께 속성 정의: '사용자 정의 속성(name, age)'  -->
   <!-- 정의한 사용자 속성값은 컴포넌트로 전달된다  -->
-  <UserProfile name="김철수" age="30"/>
+  <!--  <UserProfile name="김철수" age="30"/>-->
+  <!-- v-bind 디렉티브 사용 시 원래 값의 자료형으로 전달됨(기본형은 string)  -->
+  <UserProfile :name="`김철수`" :age="30"/>
 </template>
 
 <script>
