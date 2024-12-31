@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "FirstChild"
+  userName: "FirstChild"
 }
 </script>
 
