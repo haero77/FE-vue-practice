@@ -34,9 +34,10 @@ export default {
     };
   },
   methods: {
-    operation() {
+    operation(event) {
+
     }
-  }
+  },
 }
 </script>
 
