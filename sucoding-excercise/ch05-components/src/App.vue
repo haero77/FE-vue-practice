@@ -21,7 +21,7 @@ export default {
   },
   data() {
     return {
-      userName: '',
+      userName: '12',
       age: 30
     }
   },
