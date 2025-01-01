@@ -5,7 +5,9 @@
   <!-- 정의한 사용자 속성값은 컴포넌트로 전달된다  -->
   <!--  <UserProfile name="김철수" age="30"/>-->
   <!-- v-bind 디렉티브 사용 시 원래 값의 자료형으로 전달됨(기본형은 string)  -->
-  <UserProfile :user-name="userName" :age="age" @print-hello="printHello"/>
+  <UserProfile
+      @print-hello="(name, age) => printHello(name, age)"
+  />
 </template>
 
 <script>
@@ -19,15 +21,10 @@ export default {
     FirstChild, // components 속성값은 import 키워드 뒤의 식별자 그대로 사용
     UserProfile
   },
-  data() {
-    return {
-      userName: '12',
-      age: 30
-    }
-  },
   methods: {
-    printHello() {
-      alert('Hello!');
+    printHello(name, age) {
+      // 자식 컴포넌트에서 전달한 인자를 매개변수로 받아서 사용가능/
+      alert(`안녕하세요! 저는 ${name}이고, 나이는 ${age}살입니다.`);
     }
   }
 }

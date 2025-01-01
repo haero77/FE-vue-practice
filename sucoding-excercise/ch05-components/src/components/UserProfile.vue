@@ -35,9 +35,10 @@ export default {
   methods: {
     // 메서드 핸들러 방식의 이벤트 발신
     parentEventCall() {
-      // emits 옵션 속성으로 print-hello 이벤트만 명시했는데
-      // 다음처럼 명시되지 않은 onPrint-hello 이벤트 호출 시 경고 발생
-      this.$emit('onPrint-hello');
+      // $emit 내장 메서드 사용하여 부모 컴포넌트로 이벤트 발신할 때,
+      // 첫 번째 인자로 부모 컴포넌트 이벤트 명시.
+      // 두 번째 인자부터 부모 컴포넌트 이벤트의 '매개변수'로 값을 전달함.
+      this.$emit('print-hello', '철수', 30);
     }
   },
   created() {
