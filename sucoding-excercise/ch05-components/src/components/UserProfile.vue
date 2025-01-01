@@ -2,7 +2,7 @@
   <div>
     <!-- 자식 컴포넌트에서 부모 컴포넌트로 이벤트 발신  -->
     <!-- 이벤트 발신: 인라인 핸들러 발신  -->
-    <button @click="$emit('print-hello')">Hello 클릭</button>
+    <button @click="parentEventCall">Hello 클릭</button>
   </div>
   <div>
     <p>이름: {{ userName }}</p>
@@ -31,7 +31,10 @@ export default {
     }
   },
   methods: {
-
+    // 메서드 핸들러 방식의 이벤트 발신
+    parentEventCall() {
+      this.$emit('print-hello'); // 부모 컴포넌트로 @print-hello 이벤트 발신.
+    }
   },
   created() {
     // props의 기본 자료형은 string이다.
