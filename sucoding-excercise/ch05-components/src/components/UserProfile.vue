@@ -1,5 +1,10 @@
 <template>
   <div>
+    <!-- 자식 컴포넌트에서 부모 컴포넌트로 이벤트 발신  -->
+    <!-- 이벤트 발신: 인라인 핸들러 발신  -->
+    <button @click="$emit('print-hello')">Hello 클릭</button>
+  </div>
+  <div>
     <p>이름: {{ userName }}</p>
     <p>나이: {{ age }}</p>
   </div>
@@ -24,6 +29,9 @@ export default {
         return 10;
       },
     }
+  },
+  methods: {
+
   },
   created() {
     // props의 기본 자료형은 string이다.

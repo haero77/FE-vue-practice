@@ -5,7 +5,7 @@
   <!-- 정의한 사용자 속성값은 컴포넌트로 전달된다  -->
   <!--  <UserProfile name="김철수" age="30"/>-->
   <!-- v-bind 디렉티브 사용 시 원래 값의 자료형으로 전달됨(기본형은 string)  -->
-  <UserProfile :user-name="userName" :age="age"/>
+  <UserProfile :user-name="userName" :age="age" @print-hello="printHello"/>
 </template>
 
 <script>
@@ -23,6 +23,11 @@ export default {
     return {
       userName: '',
       age: 30
+    }
+  },
+  methods: {
+    printHello() {
+      alert('Hello!');
     }
   }
 }
