@@ -1,31 +1,31 @@
 <template>
   <FirstChild/>
-
-  <!-- 컴포넌트를 사용할 때 컴포넌트와 함께 속성 정의: '사용자 정의 속성(name, age)'  -->
-  <!-- 정의한 사용자 속성값은 컴포넌트로 전달된다  -->
-  <!--  <UserProfile name="김철수" age="30"/>-->
-  <!-- v-bind 디렉티브 사용 시 원래 값의 자료형으로 전달됨(기본형은 string)  -->
-  <UserProfile
-      @print-hello="(name, age) => printHello(name, age)"
-  />
 </template>
 
 <script>
-// 지역 등록할 컴포넌트 불러오기.
-// -> 지역 등록한 컴포넌트는 컴포넌트 등록한 곳에서만 사용 가능.
 import FirstChild from '@/components/FirstChild.vue';
-import UserProfile from "@/components/UserProfile.vue";
 
 export default {
   components: { // components 속성을 통해 컴포넌트 할당
     FirstChild, // components 속성값은 import 키워드 뒤의 식별자 그대로 사용
-    UserProfile
   },
-  methods: {
-    printHello(name, age) {
-      // 자식 컴포넌트에서 전달한 인자를 매개변수로 받아서 사용가능/
-      alert(`안녕하세요! 저는 ${name}이고, 나이는 ${age}살입니다.`);
-    }
+  // provide: 컴포넌트에서 정의한 데이터를 컴포넌트 트리 구조로 연결된 하위 컴포넌트에 공유.
+  // App -> FirstChild -> SecondChild 로 전달하는게 아니고, App -> SecondChild로 바로 쓸 수 있음
+  provide() {
+    return {
+      message: this.message,
+      reversedMessage: this.reversedMessage,
+    };
+  },
+  data() {
+    return {
+      message: 'Hello Vue!',
+    };
+  },
+  computed: {
+    reversedMessage() {
+      return this.message.split('').reverse().join('');
+    },
   }
 }
 </script>
