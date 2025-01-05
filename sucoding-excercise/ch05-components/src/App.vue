@@ -4,6 +4,7 @@
 
 <script>
 import FirstChild from '@/components/FirstChild.vue';
+import {message, reversedMessage} from '@/provide-keys.js';
 
 export default {
   components: { // components 속성을 통해 컴포넌트 할당
@@ -13,8 +14,8 @@ export default {
   // App -> FirstChild -> SecondChild 로 전달하는게 아니고, App -> SecondChild로 바로 쓸 수 있음
   provide() {
     return {
-      // message: this.message,
-      reversedMessage: this.reversedMessage,
+      [message]: this.message,
+      [reversedMessage]: this.reversedMessage,
     };
   },
   data() {
