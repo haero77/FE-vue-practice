@@ -13,7 +13,7 @@ export default {
   // App -> FirstChild -> SecondChild 로 전달하는게 아니고, App -> SecondChild로 바로 쓸 수 있음
   provide() {
     return {
-      message: this.message,
+      // message: this.message,
       reversedMessage: this.reversedMessage,
     };
   },
