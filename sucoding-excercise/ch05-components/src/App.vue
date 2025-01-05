@@ -1,32 +1,18 @@
 <template>
-  <FirstChild/>
+  <FirstChild ref="childRef"/>
 </template>
 
 <script>
 import FirstChild from '@/components/FirstChild.vue';
-import {message, reversedMessage} from '@/provide-keys.js';
 
 export default {
-  components: { // components 속성을 통해 컴포넌트 할당
-    FirstChild, // components 속성값은 import 키워드 뒤의 식별자 그대로 사용
+  components: {
+    FirstChild,
   },
-  // provide: 컴포넌트에서 정의한 데이터를 컴포넌트 트리 구조로 연결된 하위 컴포넌트에 공유.
-  // App -> FirstChild -> SecondChild 로 전달하는게 아니고, App -> SecondChild로 바로 쓸 수 있음
-  provide() {
-    return {
-      [message]: this.message,
-      [reversedMessage]: this.reversedMessage,
-    };
-  },
-  data() {
-    return {
-      message: 'Hello Vue!',
-    };
-  },
-  computed: {
-    reversedMessage() {
-      return this.message.split('').reverse().join('');
-    },
+  mounted() {
+    console.log(this.$refs.childRef.childNum); // 0
+    console.log(this.$refs.childRef.childNumOddAdd); // 짝수
+    console.log(this.$refs.childRef.getChildNum()); // 0
   }
 }
 </script>
