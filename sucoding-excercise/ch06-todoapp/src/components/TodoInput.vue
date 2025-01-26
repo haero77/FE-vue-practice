@@ -6,7 +6,7 @@
         type="text"
         class="todo__input-text"
         placeholder="할 일을 입력하세요."
-        @keyup.enter="addTodo"
+        @keydown.enter="addTodo"
     />
     <button class="todo__input-btn" @click="addTodo">등록</button>
   </div>
