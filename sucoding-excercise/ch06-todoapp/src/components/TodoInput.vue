@@ -2,6 +2,7 @@
   <div class="todo__input">
     <!-- 정의한 데이터 양방향 매핑 -->
     <input
+        ref="todoInput"
         v-model="inputMsg"
         type="text"
         class="todo__input-text"
@@ -14,7 +15,7 @@
 
 <script>
 export default {
-  name: "TodoHeader",
+  name: "TodoInput",
   emits: ["add-todo"],
   data() {
     return {
@@ -23,6 +24,14 @@ export default {
   },
   methods: {
     addTodo() {
+      const trimmedInput = this.inputMsg.trim();
+
+      if (!trimmedInput) {
+        alert('할 일을 입력해주세요.');
+        this.$refs.todoInput.focus(); // 입력창 포커스 유지
+        return;
+      }
+
       this.$emit("add-todo", this.inputMsg); // 부모 컴포넌트 이벤트 호출
       this.inputMsg = ""; // 입력 데이터 초기화
     }

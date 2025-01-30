@@ -5,7 +5,8 @@
         @update-tab="updateTab"/>
     <TodoList
         :computed-todo="computedTodo"
-        @update-todo="toggleTodoComplete"
+        @check-todo="toggleTodoComplete"
+        @update-todo-msg="updateTodoMsg"
         @delete-todo="deleteTodo"/>
     <TodoInput
         @add-todo="addTodo"/>
@@ -51,6 +52,7 @@ export default {
         msg: todoInputMsg, // 할 일 텍스트
         completed: false // 할 일 완료 여부
       };
+
       this.todoList.push(todoItem);
     },
     toggleTodoComplete(todoItemIdToToggle) {
@@ -62,7 +64,12 @@ export default {
     },
     deleteTodo(todoItemId) {
       this.todoList = this.todoList.filter(todoItem => todoItem.id !== todoItemId);
-    }
+    },
+    updateTodoMsg({ id: todoItemId, msg: msgToBe }) {
+      this.todoList = this.todoList.map(todoItem =>
+          todoItem.id === todoItemId ? { ...todoItem, msg: msgToBe } : todoItem
+      )
+    },
   }
 }
 </script>
